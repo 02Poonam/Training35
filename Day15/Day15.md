@@ -50,3 +50,5 @@ A development team needs to establish a basic CI/CD pipeline for a web applicati
   - Run the Docker container with the required configurations.
 - **Inventory File** :
 - Create an  inventory file specifying the target server(s) for deployment.
+
+![](img6.png)
