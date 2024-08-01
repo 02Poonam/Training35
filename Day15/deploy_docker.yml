@@ -1,0 +1,54 @@
+- name: Ensure Docker is installed on master and worker nodes
+  hosts: all
+  become: true
+  tasks:
+    - name: Install dependencies
+      apt:
+        name: 
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+        update_cache: yes
+
+    - name: Add Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+        update_cache: yes
+
+    - name: Ensure Docker is running
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+- name: Deploy Docker container on worker nodes
+  hosts: worker01
+  become: true
+  tasks:
+    - name: Pull Docker image from Docker Hub
+      community.docker.docker_image:
+        name: poonam02/java-docker-ansible
+        tag: "latest"
+        source: pull
+
+    - name: Run Docker container
+      community.docker.docker_container:
+        name: day_fifteen
+        image: "poonam02/java-docker-ansible:latest"
+        state: started
+        restart_policy: always
+        ports:
+          - "80:80"
