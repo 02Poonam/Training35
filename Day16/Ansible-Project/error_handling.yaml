@@ -1,0 +1,22 @@
+---
+- name: Playbook with Error Handling
+  hosts: worker01
+  become: yes
+  tasks:
+    - name: Example task that might fail
+      block:
+        - name: Try to start a non-existent service
+          service:
+            name: non_existent_service
+            state: started
+
+        - name: Try to access a non-existent file
+          command: cat /path/to/non_existent_file.txt
+      rescue:
+        - name: Log the error message
+          debug:
+            msg: "An error occurred during the execution of a task. Please check the logs."
+      always:
+        - name: Always executed task
+          debug:
+            msg: "The block completed, regardless of success or failure of the tasks."

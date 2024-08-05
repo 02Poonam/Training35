@@ -1,0 +1,9 @@
+---
+- hosts: worker01
+  become: yes
+  tasks:
+    - name: Ensure nginx is enabled and started
+      service:
+        name: nginx
+        state: started
+        enabled: yes

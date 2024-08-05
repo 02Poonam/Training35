@@ -1,0 +1,23 @@
+---
+- hosts: worker01
+  become: yes
+  tasks:
+    - name: Create a file with specific content
+      copy:
+        dest: /tmp/example_file.txt
+        content: |
+          This is a test file.
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Modify the file content
+      lineinfile:
+        path: /tmp/example_file.txt
+        line: 'Additional line added to the file.'
+        create: yes
+
+    - name: Delete the file
+      file:
+        path: /tmp/example_file.txt
+        state: absent
