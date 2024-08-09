@@ -1,0 +1,4 @@
+---
+# vars file for roles/webserver
+webserver_user: nginx
+webserver_group: nginx

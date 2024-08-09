@@ -1,0 +1,6 @@
+
+# vars file for roles/database
+mysql_root_password: 'root'
+mysql_db_name: 'mydatabase'
+mysql_user_name: 'myuser'
+mysql_user_password: 'mypassword'

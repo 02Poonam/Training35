@@ -1,0 +1,6 @@
+---
+# defaults file for roles/webserver
+webserver_port: 80
+webserver_name: localhost
+webserver_root: /usr/share/nginx/html
+
