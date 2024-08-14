@@ -1,0 +1,19 @@
+---
+- name: Web Application
+  hosts: app
+  become: true
+  
+- hosts: app
+  become: true
+  roles: 
+    - frontend
+
+- hosts: backend
+  become: true
+  roles: 
+    - backend
+
+- hosts: database
+  become: true
+  roles: 
+    - database
