@@ -1,0 +1,6 @@
+region              = "us-west-1"
+availability_zone   = "us-west-1a"
+ami_id              = "ami-0d53d72369335a9d6"
+instance_type       = "t2.micro"
+bucket_name         = "pb-bucket29"
+dynamodb_table_name = "pb-terraform-state-lock-29"
