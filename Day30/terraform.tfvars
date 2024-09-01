@@ -1,0 +1,6 @@
+instance_type = "t2.micro"
+ami_id        = "ami-0d53d72369335a9d6"
+key_pair_name = "pbd30"
+bucket_name   = "pb-bucketd30"
+private_key   = "~/.ssh/pbd30.pem"
+name          = "pb"
